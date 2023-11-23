@@ -1,0 +1,15 @@
+server:
+  port: 5555
+spring:
+  cloud:
+    gateway:
+      routes: 
+      - id: STOCK-PRICE-SERVICE
+        uri: http://localhost:2222
+        predicates:
+            - Path=/price/**
+      - id: STOCK-CALCULATION-SERVICE
+        uri: http://localhost:1111
+        predicates:
+            - Path=/calc/**
+            
